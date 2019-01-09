@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	<title>Delete {{car.name}}</title>
+{% endblock %}
+
+{% block content %}
+	<div class="text-center">
+		<h3>Are you sure! you want to delete '{{car.name}}'</h3>
+		<form action="{{url_for('deleteCar', company_id=car.company_id, car_id=car.id)}}" method="POST" class="table">
+			<input type="submit" class="btn btn-outline-danger col-md-4" value="Delete">
+			<a href="{{url_for('CompanyCars', company_id=car.company_id)}}" class="btn btn-outline-secondary col-md-4">Cancel</a>
+		</form>
+	</div>
+{% endblock %}

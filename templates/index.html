@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	<title>Main Page</title>
+{% endblock %}
+
+{% block content %}
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-5">
+			
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for message in messages %}
+						<div class="alert alert-success">
+						  {{ message }}
+						</div>
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+			<h3>List of companies: 
+				<a href="{{url_for('createCompany')}}" class="btn btn-outline-primary">Add Company</a>
+			</h3>
+			{% for company in companies %}
+				<a href="/{{company.id}}/cars">{{company.name}}</a>
+				<br>
+			{% endfor %}
+		</div>
+		<div class="col-md-5">
+			<h3>Latest Cars: </h3>
+			{% for car in latestCars %}
+				{{car.name}}
+				<br>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

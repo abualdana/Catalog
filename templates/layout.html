@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap.min.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+		<script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+		{% block title %}
+		{% endblock %}
+	</head>
+	<body>
+		<div class="container">
+			{% if loggedin %}
+				<div class="row">
+					<div class="col-md-12 text-right">
+					<a href="{{url_for('gdisconnect')}}" class="btn btn-outline-danger">Logout</a>
+					</div>
+				</div>
+			{% else %}
+				<div class="row">
+					<div class="col-md-12 text-right">
+					<a href="{{url_for('showLogin')}}" id="login" class="btn btn-outline-primary">Login</a>
+					</div>
+				</div>
+			{% endif %}
+			{% block content %}
+			{% endblock %}
+		</div>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	<title>{{company.name}} cars</title>
+{% endblock %}
+
+{% block content %}
+	<a href="{{url_for('newCar', company_id=company.id)}}" class="btn btn-outline-primary col-md-2">Add New Car</a>
+	<a href="{{url_for('MainPage')}}" class="btn btn-outline-secondary col-md-2">Main Page</a>
+	{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			{% for category, message in messages %}
+				<div class="alert alert-{{ category }}">
+				  {{ message }}
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-5">
+			<h3>{{company.name}} List of cars: </h3>
+			{% for car in cars %}
+				<p>
+					<b>{{loop.index}}- 
+						<a href="{{url_for('CompanyCarsDetails', company_id=company.id, car_id=car.id)}}">
+							{{car.name}}
+						</a>
+					</b>
+					<span class="badge badge-secondary">
+						Created by: {{creator.info.name}}
+						{% if creator.check %}
+							<a href="{{url_for('editCar', company_id=company.id, car_id=car.id)}}" class="btn-light">Edit</a>
+							<a href="{{url_for('deleteCar', company_id=company.id, car_id=car.id)}}" class="btn-light">Delete</a>
+						{% endif %}
+					</span>
+				</p>
+				<br>
+			{% endfor %}
+		</div>
+
+			<div class="col-md-5">
+				<h3>{{company.name}} cars details: </h3>
+			</div>
+
+		</div>
+{% endblock %}

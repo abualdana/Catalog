@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	<title>Add new company</title>
+{% endblock %}
+
+{% block content %}
+	<form action="{{url_for('createCompany')}}" method="POST" class="table">
+		<div class="form-group">
+			<label for="name">Company Name: </label>
+			<input type="text" class="form-control" name="name">
+		</div>
+		<div class="text-center">
+			<input type="submit" class="btn btn-outline-success col-md-4" value="Create">
+			<a href="{{url_for('MainPage')}}" class="btn btn-outline-secondary col-md-4">Cancel</a>
+		</div>
+	</form>
+{% endblock %}
