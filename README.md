@@ -1,10 +1,10 @@
 
-#About Catalog Application:
+# About Catalog Application:
 The application provides a list of cars within their manufacturing companies as well as provides a user registration and authentication system. Registered users will have the ability to post, edit and delete their own records.
 
 
 
-##How to run the application:
+## How to run the application:
 
 * Install <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com">Vagrant</a>.
 
